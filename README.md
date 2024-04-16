@@ -5,7 +5,7 @@ Tested Environment:
 RaspberryPi Google AIY Kit
 
 $cat /etc/debian_version
-10.13
+>10.13
 
 $python3 -V
-Python 3.7.3
+>Python 3.7.3
