@@ -18,9 +18,6 @@ VIDEO_DIR = "/home/pi/Videos"
 MP3_DIR = "/home/pi/Audios"
 OPTS = {
     "format": "136+140",
-    "sub-lang": "en",
-    "embed-subs": " ",
-    "write-sub": " ",
     "outtmpl": "{VIDEO_DIR}/%(title)s.mp4".format(VIDEO_DIR=VIDEO_DIR)
 }
 OPTS_MP3 = {
@@ -100,9 +97,37 @@ def renamemp3(info_mp3):
         print("Renaming MP3 finish!".format(title))
 
 if __name__ == "__main__":
-    url = raw_input(">> ")
-    info = download(url)
-    rename(info)
-    info_mp3 = downloadmp3(url)
-    renamemp3(info_mp3)
+#    url = raw_input(">> ")
+#    info = download(url)
+#    rename(info)
+#    info_mp3 = downloadmp3(url)
+#    renamemp3(info_mp3)
 
+    rowNumber = 0
+    fileobj = open(URLFILE, "r")
+    #fileobj = open(URLFILE, "r", encoding="utf_8")
+    while True:
+       url = fileobj.readline()
+       if url:
+           try:
+               info = download(url)
+               rename(info)
+               info_mp3 = downloadmp3(url)
+               try:
+                   renamemp3(info_mp3)
+               except:
+                   print("Error is in MP3")
+                   pass
+               while True: time.sleep(100)
+           except (KeyboardInterrupt, SystemExit):
+               print('\n !Received keyboard interrupt, quitting threads.\n')
+           except Exception as err:
+               print("Unknown issue")
+               print('Unexpected {err=}, {type(err)=}')
+           else:
+               print(rowNumber, ":", url, " download completed.")
+           finally: 
+               rowNumber += 1
+               print(rowNumber, ":", url)
+       else:
+           break
