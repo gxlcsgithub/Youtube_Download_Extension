@@ -24,7 +24,7 @@ No problem, I am working on it to improve it anyway.
 
 Very simple!
 1. set the video or videos list URL in your [YoutubeURLList.txt].
-2. Run [downloadYoutube_SUB.py].
+2. Run [downloadYoutube_List.py]. (I had updated wrong file with the name)
 
 I tried to add sub for it, but it didnot work yet, anyway, the name keep as what it should be.
 
