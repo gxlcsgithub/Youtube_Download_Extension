@@ -1,6 +1,6 @@
 Release notes:
 
-- 2024/05/17
+■ 2024/05/17
 As Youtube_DL has been not continued for a while, some videos will got download error when execute the script.
 From 2024/05/10, we will use yt_dlp package instead of Youtube_DL.
 You can find the package in python3 pip.
